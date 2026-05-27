@@ -19,6 +19,8 @@ lang: en
 timezone: Asia/Karachi
 
 # Build settings
+plugins:
+  - jekyll-sitemap
 
 sass:
   style: compressed
