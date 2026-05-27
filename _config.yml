@@ -19,8 +19,6 @@ lang: en
 timezone: Asia/Karachi
 
 # Build settings
-theme: null
-plugins: []
 
 sass:
   style: compressed
