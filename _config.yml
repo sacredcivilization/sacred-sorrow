@@ -1,0 +1,33 @@
+title: Sacred Sorrow
+tagline: The Structural Isolation of the Prophetic House
+description: >
+  The existential and humanistic core of the Sacred Civilization Research Archive.
+  Forensic documentation of the deliberate structural isolation, financial strangulation,
+  and political marginalization of Imam Ali (A.S.) and the Ahl al-Bayt following Saqifa.
+  The reason the Salam Code went underground.
+
+url: "https://sacredcivilization.github.io"
+baseurl: "/sacred-sorrow"
+
+author:
+  name: Saad Khizar Bosal
+  title: Framework Architect
+  location: Mandi Bahauddin, Punjab, Pakistan
+
+# SEO
+lang: en
+timezone: Asia/Karachi
+
+# Build settings
+theme: null
+plugins: []
+
+sass:
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - vendor/
