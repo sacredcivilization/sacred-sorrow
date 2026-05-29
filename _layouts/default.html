@@ -59,5 +59,57 @@
   {% include footer.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+  <!-- ══ SORROW AMBIENT PLAYER — Arabic Sufi · Haidari · Ya Ali ══ -->
+  <style>
+  #yt-sorrow-wrap{position:fixed;top:-2px;left:-2px;width:2px;height:2px;overflow:hidden;opacity:0;pointer-events:none;z-index:-9}
+  #sorrow-bar{position:fixed;bottom:26px;right:26px;z-index:9999}
+  #sorrow-btn{display:flex;align-items:center;gap:7px;background:rgba(4,2,2,0.93);border:1px solid rgba(138,20,20,0.52);color:rgba(138,20,20,0.7);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:9px 15px;cursor:pointer;border-radius:2px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.3s,border-color 0.3s,color 0.3s;animation:sorrow-pulse 3s ease-in-out infinite}
+  #sorrow-btn:hover{background:rgba(138,20,20,0.12);border-color:rgba(190,38,38,0.88);color:rgba(215,58,58,1);animation:none}
+  #sorrow-btn.live{background:rgba(138,20,20,0.1);border-color:rgba(190,38,38,0.85);color:rgba(215,58,58,0.95);animation:none}
+  .sorrow-dot{width:5px;height:5px;border-radius:50%;background:rgba(138,20,20,0.6);flex-shrink:0;transition:background 0.3s,box-shadow 0.3s}
+  #sorrow-btn.live .sorrow-dot{background:rgba(215,58,58,1);box-shadow:0 0 6px rgba(215,58,58,0.55)}
+  @keyframes sorrow-pulse{0%,100%{box-shadow:0 0 0 0 rgba(138,20,20,0)}60%{box-shadow:0 0 0 5px rgba(138,20,20,0.2)}}
+  </style>
+
+  <div id="yt-sorrow-wrap" aria-hidden="true">
+    <div id="yt-sorrow-player"></div>
+  </div>
+
+  <div id="sorrow-bar" role="complementary" aria-label="Ambient music control">
+    <button id="sorrow-btn" onclick="toggleSorrow()" title="Toggle ambient — Haidari Sufi · Ya Ali">
+      <span class="sorrow-dot"></span>
+      <span id="sorrow-label">AL-HUZN</span>
+    </button>
+  </div>
+
+  <script>
+  (function(){
+    var s=document.createElement('script');
+    s.src='https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+  })();
+  var _sorrowPlayer,_sorrowMuted=true;
+  window.onYouTubeIframeAPIReady=function(){
+    _sorrowPlayer=new YT.Player('yt-sorrow-player',{
+      height:'1',width:'1',
+      videoId:'M9XrcZPOzb8',
+      playerVars:{autoplay:1,mute:1,loop:1,playlist:'M9XrcZPOzb8',controls:0,disablekb:1,fs:0,modestbranding:1,iv_load_policy:3,rel:0},
+      events:{onReady:function(e){e.target.playVideo();}}
+    });
+  };
+  function toggleSorrow(){
+    if(!_sorrowPlayer||typeof _sorrowPlayer.unMute!=='function')return;
+    var btn=document.getElementById('sorrow-btn');
+    var lbl=document.getElementById('sorrow-label');
+    if(_sorrowMuted){
+      _sorrowPlayer.unMute();_sorrowPlayer.setVolume(32);
+      _sorrowMuted=false;btn.classList.add('live');lbl.textContent='يا عليٌّ ♪';
+    }else{
+      _sorrowPlayer.mute();
+      _sorrowMuted=true;btn.classList.remove('live');lbl.textContent='AL-HUZN';
+    }
+  }
+  </script>
 </body>
 </html>
