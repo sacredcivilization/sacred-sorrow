@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sacredcivilization.github.io/sacred-sorrow/sitemap.xml
+Sitemap: https://sorrow.alvidscriptorium.com/sitemap.xml
