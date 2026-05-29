@@ -102,8 +102,28 @@
       document.head.appendChild(s);
     })();
   }
+  /* Auto-unmute on first user gesture */
+  var _sorrowAutoUnmuted=false;
+  function _sorrowUnmuteOnGesture(){
+    if(_sorrowAutoUnmuted)return;
+    if(!_sorrowPlayer||typeof _sorrowPlayer.unMute!=='function')return;
+    _sorrowAutoUnmuted=true;
+    _sorrowPlayer.unMute();_sorrowPlayer.setVolume(32);
+    _sorrowMuted=false;
+    var btn=document.getElementById('sorrow-btn');
+    var lbl=document.getElementById('sorrow-label');
+    if(btn)btn.classList.add('live');
+    if(lbl)lbl.textContent='يا عليٌّ ♪';
+    ['click','scroll','touchstart','keydown'].forEach(function(ev){
+      document.removeEventListener(ev,_sorrowUnmuteOnGesture,{passive:true});
+    });
+  }
+  ['click','scroll','touchstart','keydown'].forEach(function(ev){
+    document.addEventListener(ev,_sorrowUnmuteOnGesture,{passive:true});
+  });
   function toggleSorrow(){
     if(!_sorrowPlayer||typeof _sorrowPlayer.unMute!=='function')return;
+    _sorrowAutoUnmuted=true;
     var btn=document.getElementById('sorrow-btn');
     var lbl=document.getElementById('sorrow-label');
     if(_sorrowMuted){
