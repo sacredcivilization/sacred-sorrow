@@ -98,14 +98,16 @@ nav {
 .nav-text {
   font-family: 'Cinzel', serif; font-size: 9.5px;
   letter-spacing: 0.12em; color: var(--parchment-muted);
-  line-height: 1.4; max-width: 440px;
+  line-height: 1.4; max-width: 180px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .nav-text small { display: block; color: var(--ash); font-size: 8px; letter-spacing: 0.2em; }
-.nav-links { display: flex; gap: 22px; list-style: none; }
+.nav-links { display: flex; gap: 18px; list-style: none; flex-wrap: nowrap; }
 .nav-links a {
-  font-family: 'Cinzel', serif; font-size: 9.5px;
-  letter-spacing: 0.18em; color: var(--ash-light);
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 0.14em; color: var(--ash-light);
   text-decoration: none; text-transform: uppercase; transition: color 0.2s;
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
@@ -570,7 +572,7 @@ a.ss-ft-network { color: var(--gold) !important; }
 /* ══════════════════════════════════════════════
    RESPONSIVE ≤ 900px
    ══════════════════════════════════════════════ */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   nav { padding: 12px 20px; }
   .nav-text small { display: none; }
   .nav-hamburger { display: flex; }
@@ -583,7 +585,7 @@ a.ss-ft-network { color: var(--gold) !important; }
   .nav-links.open { display: flex; }
   .nav-links li { border-bottom: 1px solid rgba(139,0,0,0.10); }
   .nav-links li:last-child { border-bottom: none; }
-  .nav-links a { display: block; padding: 14px 0; font-size: 11px; }
+  .nav-links a { display: block; padding: 14px 0; font-size: 11px; white-space: normal; }
 
   .ss-hero { padding: 120px 20px 80px; }
   .ss-hero-thesis { font-size: 17px; }
