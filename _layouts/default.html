@@ -109,6 +109,42 @@
 
   {% include nav.html %}
 
+  {% if page.url != '/' and page.title %}
+  <!-- ══ DATE META BAR ══ -->
+  <div style="max-width:1160px; margin: 82px auto 0; padding: 14px 48px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; border-bottom: 1px solid rgba(139,0,0,0.08);">
+    <span class="mono" style="font-size:9px; letter-spacing:0.18em; color:rgba(180,140,100,0.45); text-transform:uppercase;">
+      SCRA NODE-03 &nbsp;·&nbsp; Sacred Sorrow &nbsp;·&nbsp; sorrow.alvidscriptorium.com
+    </span>
+    <span class="mono" style="font-size:9px; letter-spacing:0.18em; color:rgba(180,140,100,0.45); text-transform:uppercase;">
+      Published &amp; Updated &nbsp;·&nbsp; {{ page.last_modified_at | default: '2026-06-02' }}
+    </span>
+  </div>
+  {% endif %}
+
+  {% if page.url != '/' and page.title %}
+  <!-- ══ SCHEMA.ORG — BREADCRUMB ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Sacred Sorrow",
+        "item": "{{ site.url }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ page.title }}",
+        "item": "{{ page.url | absolute_url }}"
+      }
+    ]
+  }
+  </script>
+  {% endif %}
+
   {{ content }}
 
   {% include footer.html %}
