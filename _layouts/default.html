@@ -6,44 +6,99 @@
 
   <title>{% if page.title %}{{ page.title }} — {% endif %}Sacred Sorrow · Structural Isolation of the Prophetic House · SCRA</title>
 
+  <!-- ══ CORE SEO ══ -->
   <meta name="description" content="{% if page.description %}{{ page.description | strip_newlines | strip }}{% else %}{{ site.description | strip_newlines | strip }}{% endif %}">
   <meta name="author" content="{{ site.author.name }}">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <meta name="keywords" content="Imam Ali, Ahl al-Bayt, Saqifa, Fadak, Sacred Sorrow, structural isolation, Prophetic House, Shia theology, Al-Kafi, Hayat al-Qulub, Sacred Civilization Research Archive, SCRA">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}Imam Ali, Ahl al-Bayt, Saqifa, Fadak, Khums, hadith suppression, Umar ibn al-Khattab, Muawiyah ibn Abi Sufyan, structural isolation, Prophetic House, Shia Islam, Al-Kafi, al-Kulayni, Imam al-Sadiq, Sacred Sorrow, Sacred Civilization Research Archive, SCRA{% endif %}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
 
+  <!-- ══ OPEN GRAPH ══ -->
   <meta property="og:site_name" content="Sacred Sorrow · SCRA Node 03">
-  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="{% if page.layout == 'page' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{% if page.title %}{{ page.title }} — Sacred Sorrow{% else %}Sacred Sorrow · Structural Isolation of the Prophetic House{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description | strip_newlines | strip }}{% else %}{{ site.description | strip_newlines | strip }}{% endif %}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="https://dargah-ghazikot.alvidscriptorium.com/assets/images/og-default.png">
+  <meta property="og:image:secure_url" content="https://dargah-ghazikot.alvidscriptorium.com/assets/images/og-default.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sacred Sorrow — The Structural Isolation of the Prophetic House — SCRA NODE-03">
 
+  <!-- ══ TWITTER / X CARD ══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} — Sacred Sorrow{% else %}Sacred Sorrow · Structural Isolation of the Prophetic House{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_newlines | strip }}{% else %}{{ site.description | strip_newlines | strip }}{% endif %}">
+  <meta name="twitter:image" content="https://dargah-ghazikot.alvidscriptorium.com/assets/images/og-default.png">
+  <meta name="twitter:image:alt" content="Sacred Sorrow — SCRA NODE-03">
+
+  <!-- ══ SCHEMA.ORG — SITE-WIDE @GRAPH ══ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "{{ site.url }}{{ site.baseurl }}/#website",
-    "url": "{{ site.url }}{{ site.baseurl }}/",
-    "name": "Sacred Sorrow — Structural Isolation of the Prophetic House",
-    "description": "{{ site.description | strip_newlines | strip }}",
-    "inLanguage": "en-US",
-    "isPartOf": {
-      "@type": "WebSite",
-      "@id": "https://library.alvidscriptorium.com/#website"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Saad Khizar Bosal",
-      "jobTitle": "Framework Architect",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mandi Bahauddin",
-        "addressRegion": "Punjab",
-        "addressCountry": "PK"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "url": "{{ site.url }}/",
+        "name": "Sacred Sorrow — Structural Isolation of the Prophetic House",
+        "description": "{{ site.description | strip_newlines | strip }}",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://alvidscriptorium.com/#website"
+        },
+        "publisher": { "@id": "{{ site.url }}/#author" }
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ site.url }}/#author",
+        "name": "Saad Khizar Bosal",
+        "jobTitle": "Framework Architect",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Sacred Civilization Research Archive",
+          "url": "https://alvidscriptorium.com"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mandi Bahauddin",
+          "addressRegion": "Punjab",
+          "addressCountry": "PK"
+        },
+        "sameAs": ["https://alvidscriptorium.com/", "https://dargah-ghazikot.alvidscriptorium.com/"]
       }
-    }
+    ]
   }
   </script>
+
+  {% if page.layout == 'page' and page.title %}
+  <!-- ══ SCHEMA.ORG — PER-PAGE SCHOLARLY ARTICLE ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "@id": "{{ page.url | absolute_url }}#doc",
+    "name": "{{ page.title }}",
+    "headline": "{{ page.title }}",
+    "description": "{% if page.description %}{{ page.description | strip_newlines | strip }}{% endif %}",
+    "url": "{{ page.url | absolute_url }}",
+    "inLanguage": "en",
+    "author": { "@id": "{{ site.url }}/#author" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sacred Civilization Research Archive",
+      "url": "https://alvidscriptorium.com"
+    },
+    "isPartOf": { "@id": "{{ site.url }}/#website" },
+    "genre": ["Islamic History", "Political History", "Shia Studies", "Source Criticism"],
+    "isAccessibleForFree": true,
+    "dateModified": "{{ page.last_modified_at | default: '2026-06-02' }}"
+  }
+  </script>
+  {% endif %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
