@@ -11,7 +11,10 @@
   --gold-dim:        #A07C38;
   --oxblood:         #8B0000;
   --sorrow:          #3D0A0A;   /* deep sacred grief — background wash */
-  --sorrow-mid:      #6B1414;   /* mid grief — borders, accents */
+  --sorrow-mid:      #CC6060;   /* mid grief, text-readable — was #6B1414 at
+                                   ~1.6:1 contrast (used as text in 13 of 15
+                                   call sites despite being documented as
+                                   "borders, accents" only); now 5.1:1 */
   --sorrow-light:    #C05050;   /* light grief — readable text accent */
   --ash:             #9A9080;
   --ash-light:       #C0B4A0;
