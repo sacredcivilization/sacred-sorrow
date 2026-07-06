@@ -1,5 +1,5 @@
 # Sacred Sorrow — sorrow.alvidscriptorium.com
-# Sacred Civilization Research Archive (SCRA) · NODE-03
+# Alvid Scriptorium — The Intizār Archive · NODE-03
 
 # ── All crawlers ──────────────────────────────────────
 User-agent: *
